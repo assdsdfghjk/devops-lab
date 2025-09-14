@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  push:       # Запускать при каждом push
+    branches:
+      - main  # Основная ветка
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Где запускать
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Run script
+        run: python hello.py
